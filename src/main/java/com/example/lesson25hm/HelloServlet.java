@@ -23,25 +23,20 @@ public class HelloServlet extends HttpServlet {
         response.setContentType("text/html");
 
 
-
         user.setLogin(request.getParameter("login"));
         user.setPassword(request.getParameter("password"));
-
-
 
 
         if (user.getLogin().length() > 2 && user.getPassword().length() > 2) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            ServletContext servletContext = getServletContext();
-            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/second-servlet");
-            requestDispatcher.forward(request, response);
+//            ServletContext servletContext = getServletContext();
+//            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/welcome-servlet");
+//            requestDispatcher.forward(request, response);
+            response.sendRedirect("welcome-servlet");
 
-            }
-        else {
+        } else {
             request.getRequestDispatcher("index.jsp").forward(request, response);
-
-
 
 
         }

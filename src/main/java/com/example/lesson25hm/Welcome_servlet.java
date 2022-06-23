@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-    @WebServlet(name = "helloServl", value = "/second-servlet")
-    public class Second_Servlet extends HttpServlet {
+    @WebServlet(name = "WelcomeServlet", value = "/welcome-servlet")
+    public class Welcome_servlet extends HttpServlet {
 
         private String message;
 
