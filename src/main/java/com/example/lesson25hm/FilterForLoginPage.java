@@ -15,7 +15,7 @@ public class FilterForLoginPage implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest)  servletRequest;
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
         if (request.getSession().getAttribute("user") != null) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
