@@ -2,8 +2,10 @@ package com.example.lesson25hm;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.HttpServletRequest;
 
 import java.io.IOException;
+
 @WebFilter(servletNames = "WelcomeServlet")
 public class FilterForLoginPage implements Filter {
     @Override
@@ -13,9 +15,10 @@ public class FilterForLoginPage implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        if(servletRequest.getAttribute("user") != null) {
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        if (request.getSession().getAttribute("user") != null) {
             filterChain.doFilter(servletRequest, servletResponse);
-        }else{
+        } else {
             servletRequest.getRequestDispatcher("index.jsp").forward(servletRequest, servletResponse);
         }
     }
